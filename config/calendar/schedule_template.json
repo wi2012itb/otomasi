@@ -1,0 +1,12 @@
+{
+    "start_date": "2025-02-17",
+    "class_schedule": {
+        "K01": "Jumat",
+        "K02": "Jumat",
+        "K03": "Rabu",
+        "K04": "Senin",
+        "K05": "Senin",
+        "K06": "Rabu"
+    },
+    "week_count": 16
+}
