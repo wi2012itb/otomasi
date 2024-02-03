@@ -1,7 +1,7 @@
 import argparse
 import os
 
-from config import NIM_SIX_COL, NIM_TARGET_COL
+from config import NIM_SIX_COL, NIM_TARGET_COL, FILE_ENCODING
 
 if __name__ == "__main__":
     arg_in = argparse.ArgumentParser()
@@ -25,7 +25,7 @@ if __name__ == "__main__":
     target_set = set()
     target_double = dict()
     
-    with open(filepath, "r", encoding='UTF-8') as data_file:
+    with open(filepath, "r", encoding=FILE_ENCODING) as data_file:
         data_file.readline()
         for row in data_file:
             # print(row)
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     with open (OUTPUT_FILENAME, "w+") as out_file:
         out_file.write('')
     
-    with open (OUTPUT_FILENAME, "a", encoding='UTF-8') as out_file:
+    with open (OUTPUT_FILENAME, "a", encoding=FILE_ENCODING) as out_file:
             # write invalid NIM (found in NIM_target, but not in NIM_SIX)
             out_file.write("NIM_target_Invalid\n")
             invalid_set = target_set.difference(six_set)
