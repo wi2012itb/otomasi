@@ -7,7 +7,7 @@ if __name__ == "__main__":
     arg_in = argparse.ArgumentParser()
     arg_in.add_argument("source_filename", type=str)
     arg_in.add_argument("update_filename", type=str)
-    arg_in.add_argument("--o", type=str, help="output filename", default="difference.csv")
+    arg_in.add_argument("--o", type=str, help="output filename", default="updated_data.csv")
 
     args = arg_in.parse_args()
     

@@ -6,16 +6,22 @@ FILE_ENCODING = 'UTF-8'
 FILE_DELIMITER = ','
 
 '''
-USES 0 INDEXING FOR COLUMNS
+### USES 0 INDEXING FOR COLUMNS ###
 '''
 
-# No,NIM,Nama,Kelas SIX,Kuliah,Lokasi UTS
+'''
+    example of a csv file's columns
+    No,NIM,Nama,Kelas SIX,Kuliah,Lokasi UTS
+'''
 # the key column to match both file's row
 DATA_KEY_COL = 1
 # the columns that are to be updated with values from new target
 UPDATE_TARGET_COLS = [4]
 
-# No.,NIM,Nama,SIX,Kuliah,STATUS
+'''
+    example of a csv file's columns
+    No.,NIM,Nama,SIX,Kuliah,STATUS
+'''
 # the key column to match both file's row
 UPDATE_KEY_COL = 1
 # the columns that are to be used to update the target values of the columns
