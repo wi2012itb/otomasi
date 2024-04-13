@@ -1,0 +1,332 @@
+P FITB NIM
+Series([], )
+
+P FITB Nama
+Series([], )
+
+P FITB SIX
+Series([], )
+
+P FITB JK
+Series([], )
+
+P FMIPA NIM
+Series([], )
+
+P FMIPA Nama
+Series([], )
+
+P FMIPA SIX
+Series([], )
+
+P FMIPA JK
+Series([], )
+
+P FSRD NIM
+17221051
+17221068
+17221074
+17222093
+
+P FSRD Nama
+    Tiffa Elyza Putri
+       Nadya Sianturi
+     Debora Rotua Uli
+Ruth Puspita Maharani
+
+P FSRD SIX
+K04
+K04
+K04
+K04
+
+P FSRD JK
+P
+P
+P
+P
+
+P FTI NIM
+13422125
+
+P FTI Nama
+Marella Parahita Dewani
+
+P FTI SIX
+K04
+
+P FTI JK
+P
+
+P FTMD NIM
+Series([], )
+
+P FTMD Nama
+Series([], )
+
+P FTMD SIX
+Series([], )
+
+P FTMD JK
+Series([], )
+
+P FTSL NIM
+Series([], )
+
+P FTSL Nama
+Series([], )
+
+P FTSL SIX
+Series([], )
+
+P FTSL JK
+Series([], )
+
+P FTTM NIM
+12122126
+12222123
+12222129
+12321007
+
+P FTTM Nama
+Revina Elisabeth Permata Sari
+            Raduna Simatupang
+    Setia Christy Daniella S.
+    Nadia Vero Ulina Ambarita
+
+P FTTM SIX
+K04
+K04
+K04
+K04
+
+P FTTM JK
+P
+P
+P
+P
+
+P SAPPK NIM
+15422103
+15422105
+
+P SAPPK Nama
+     Angella Leticia
+Yohana P. Indrasmoro
+
+P SAPPK SIX
+K04
+K04
+
+P SAPPK JK
+P
+P
+
+P SBM NIM
+Series([], )
+
+P SBM Nama
+Series([], )
+
+P SBM SIX
+Series([], )
+
+P SBM JK
+Series([], )
+
+P SF NIM
+Series([], )
+
+P SF Nama
+Series([], )
+
+P SF SIX
+Series([], )
+
+P SF JK
+Series([], )
+
+P SITH NIM
+Series([], )
+
+P SITH Nama
+Series([], )
+
+P SITH SIX
+Series([], )
+
+P SITH JK
+Series([], )
+
+P STEI NIM
+Series([], )
+
+P STEI Nama
+Series([], )
+
+P STEI SIX
+Series([], )
+
+P STEI JK
+Series([], )
+
+L FITB NIM
+12921002
+12922075
+
+L FITB Nama
+  Nicholas Halomoan Nabayo
+Daniel Bonifasius Sipayung
+
+L FITB SIX
+K04
+K04
+
+L FITB JK
+L
+L
+
+L FMIPA NIM
+Series([], )
+
+L FMIPA Nama
+Series([], )
+
+L FMIPA SIX
+Series([], )
+
+L FMIPA JK
+Series([], )
+
+L FSRD NIM
+Series([], )
+
+L FSRD Nama
+Series([], )
+
+L FSRD SIX
+Series([], )
+
+L FSRD JK
+Series([], )
+
+L FTI NIM
+13422116
+
+L FTI Nama
+Robben A Timbo H Sinurat
+
+L FTI SIX
+K04
+
+L FTI JK
+L
+
+L FTMD NIM
+Series([], )
+
+L FTMD Nama
+Series([], )
+
+L FTMD SIX
+Series([], )
+
+L FTMD JK
+Series([], )
+
+L FTSL NIM
+Series([], )
+
+L FTSL Nama
+Series([], )
+
+L FTSL SIX
+Series([], )
+
+L FTSL JK
+Series([], )
+
+L FTTM NIM
+12222109
+12222112
+12222118
+12222124
+
+L FTTM Nama
+Gabriel Chris Palanza Sihotang
+      Pascal Timotius Sianturi
+         Evan Timothy Narwastu
+      Aldrian Tridesman Tiku R
+
+L FTTM SIX
+K04
+K04
+K04
+K04
+
+L FTTM JK
+L
+L
+L
+L
+
+L SAPPK NIM
+15421001
+
+L SAPPK Nama
+Julius Kristian Eliezer
+
+L SAPPK SIX
+K04
+
+L SAPPK JK
+L
+
+L SBM NIM
+Series([], )
+
+L SBM Nama
+Series([], )
+
+L SBM SIX
+Series([], )
+
+L SBM JK
+Series([], )
+
+L SF NIM
+Series([], )
+
+L SF Nama
+Series([], )
+
+L SF SIX
+Series([], )
+
+L SF JK
+Series([], )
+
+L SITH NIM
+Series([], )
+
+L SITH Nama
+Series([], )
+
+L SITH SIX
+Series([], )
+
+L SITH JK
+Series([], )
+
+L STEI NIM
+Series([], )
+
+L STEI Nama
+Series([], )
+
+L STEI SIX
+Series([], )
+
+L STEI JK
+Series([], )
+
