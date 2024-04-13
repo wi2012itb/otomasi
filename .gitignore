@@ -1,1 +1,5 @@
+# python files
 __pycache__
+
+# any temporary file to be processed
+*.csv
