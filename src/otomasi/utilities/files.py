@@ -38,7 +38,7 @@ def read_glob_df(glob_str: str, recursive: bool = False):
     return [read_df(_path) for _path in paths]
 
 
-def read_df(file_path: str, file_format: DfInFormat = None, dtype: dict = {}):
+def read_df(file_path: str, file_format: DfInFormat | None = None, dtype: dict = {}):
     if file_format is None:
         file_format = DfInFormat(get_extension(file_path))
     match file_format:
