@@ -3,15 +3,11 @@ import itertools
 import pandas as pd
 
 from otomasi.utilities.files import read_df, write_df
-
-
-def _find_anchor(df: pd.DataFrame, anchor_header: str):
-    anchor_loc = df[df.eq(anchor_header)].dropna(axis=1, how="all").dropna(how="all")
-    return (anchor_loc.index.item(), df.columns.get_loc(anchor_loc.columns.item()))
+from otomasi.utilities.xlsx import extract_table, find_anchor
 
 
 def _extract_data(df: pd.DataFrame, anchor_header: str) -> pd.DataFrame:
-    (row, col) = _find_anchor(df, anchor_header)
+    (row, col) = find_anchor(df, anchor_header)
     _df = df.iloc[row:, col:]
     # Extract headers
     main_headers = (
@@ -27,7 +23,7 @@ def _extract_data(df: pd.DataFrame, anchor_header: str) -> pd.DataFrame:
         for header, sub in zip(main_headers, sub_headers)
     ]
 
-    data = _df.iloc[2:].set_axis(final_headers, axis=1)
+    data = extract_table(_df, final_headers, start_row=2)
     data.dropna(subset=anchor_header, inplace=True)
     return data
 

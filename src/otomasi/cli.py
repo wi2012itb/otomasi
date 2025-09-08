@@ -3,8 +3,8 @@ from argparse import ArgumentParser, FileType, Namespace
 
 from otomasi.attendance import zoom_attendance
 from otomasi.calendar import holiday_summary
-from otomasi.grading import adjust_final, compile
-from otomasi.mentoring import assign_groups, journal_screener, mentor_compile
+from otomasi.grading import adjust_final, compile, dpk
+from otomasi.mentoring import assign_groups, journal_screener, journeys_compile
 from otomasi.utilities.files import DfOutFormat
 
 
@@ -59,7 +59,23 @@ class Compile(Subcommand):
         )
 
 
-class CompileMentoring(Subcommand):
+class DPK(Subcommand):
+    def load_parser(self, parser):
+        parser.add_argument(
+            "inputs",
+            type=str,
+            nargs="+",
+            help="input files to be compiled together, MUST share a common column with the master file",
+        )
+        parser.add_argument(
+            "--out", type=str, help="output file name", default="master_dpk"
+        )
+
+    def main(self, args):
+        dpk.main(args.inputs, args.out)
+
+
+class CompileJourneys(Subcommand):
     def load_parser(self, parser):
         parser.add_argument(
             "input_file",
@@ -73,10 +89,10 @@ class CompileMentoring(Subcommand):
             help="anchor header to be used for extraction",
             default="NIM",
         )
-        parser.add_argument("--out", type=str, default="mentoring")
+        parser.add_argument("--out", type=str, default="journeys")
 
     def main(self, args):
-        return mentor_compile.main(args.input_file, args.anchor, args.out)
+        return journeys_compile.main(args.input_file, args.anchor, args.out)
 
 
 class MentorGroup(Subcommand):
@@ -224,13 +240,19 @@ def get_subcommands() -> list[Subcommand]:
             "Generate attendance based on Zoom meeting report's duration",
         ),
         MentorGroup("groups", "Generate mentoring groups from student list"),
-        CompileMentoring("mentor-compile", "Compile mentors' grading sheets"),
+        CompileJourneys(
+            "journeys-compile", "Compile mentors' grading sheets for journeys"
+        ),
         JournalScreener(
             "journal", "Perform sanity checks from submitted devotion journals"
         ),
         Compile(
             "compile",
             "Compiles several files into one based on a master (reference) file",
+        ),
+        DPK(
+            "dpk",
+            "Compiles several DPK files into one file, must share same columns",
         ),
         AdjustScore("adjust-score", "Adjust final score based on modified final grade"),
     ]
