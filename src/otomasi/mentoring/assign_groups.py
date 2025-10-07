@@ -1,4 +1,6 @@
 import pandas as pd
+import unicodedata
+from otomasi.utilities.files import read_df
 from collections import deque
 
 
@@ -154,10 +156,59 @@ def main(input_file: list[str], out: str, group_size: int, min_size: int):
     l_groups: list[pd.DataFrame] = []
     p_groups: list[pd.DataFrame] = []
     for file in input_file:
-        dataset = pd.read_csv(file)
+        # use read_df to get encoding fallbacks and consistent file handling
+        dataset = read_df(file)
+        # Normalize header names and ensure required columns exist
+        dataset = _standardize_columns(dataset)
+        _validate_required_columns(dataset)
         l_datasets, p_datasets = create_groups(dataset, group_size, min_size)
         l_groups.extend(l_datasets)
         p_groups.extend(p_datasets)
 
     write_to_excel(l_groups, out, "L", overwrite=True, check_min=min_size)
-    write_to_excel(p_groups, out, "P", overwrite=True, check_min=min_size)
+    write_to_excel(p_groups, out, "P", overwrite=False, check_min=min_size)
+
+
+def _clean_header(name: str) -> str:
+    # Normalize unicode and remove non-breaking spaces, trim and uppercase
+    s = unicodedata.normalize("NFKC", str(name)).replace("\u00A0", " ")
+    return s.strip().upper()
+
+
+def _standardize_columns(df: pd.DataFrame) -> pd.DataFrame:
+    # Map potential header variants to the expected canonical names
+    synonyms = {
+        "KELOMPOK": "KELOMPOK",
+        "KEL": "KELOMPOK",
+        "JK": "KELOMPOK",
+        "GENDER": "KELOMPOK",
+        "JENIS KELAMIN": "KELOMPOK",
+        "FAKULTAS": "FAKULTAS",
+        "FAK": "FAKULTAS",
+        "PRODI": "PRODI",
+        "PROGRAM STUDI": "PRODI",
+        "PROGDI": "PRODI",
+        "RUMPUN": "RUMPUN",
+    }
+
+    rename_map: dict[str, str] = {}
+    for c in df.columns:
+        key = _clean_header(c)
+        if key in synonyms:
+            rename_map[c] = synonyms[key]
+        else:
+            # keep cleaned name for other columns (e.g., NO, NIM, NAMA)
+            rename_map[c] = _clean_header(c)
+
+    df = df.rename(columns=rename_map)
+    return df
+
+
+def _validate_required_columns(df: pd.DataFrame):
+    missing = [c for c in ("KELOMPOK", "FAKULTAS", "PRODI") if c not in df.columns]
+    if missing:
+        raise ValueError(
+            "Input file is missing required columns: "
+            + ", ".join(missing)
+            + f". Found columns: {list(df.columns)}"
+        )

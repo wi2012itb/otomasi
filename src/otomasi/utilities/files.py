@@ -1,7 +1,9 @@
 import glob
 from enum import Enum
-from csv import QUOTE_STRINGS
+import csv
 import pandas as pd
+
+QUOTE_STRINGS = getattr(csv, "QUOTE_STRINGS", csv.QUOTE_NONNUMERIC)
 
 
 class DfInFormat(Enum):
@@ -38,12 +40,24 @@ def read_glob_df(glob_str: str, recursive: bool = False):
     return [read_df(_path) for _path in paths]
 
 
-def read_df(file_path: str, file_format: DfInFormat | None = None, dtype: dict = {}):
+def read_df(file_path: str, file_format: DfInFormat | None = None, dtype: dict = {}, **kwargs):
     if file_format is None:
         file_format = DfInFormat(get_extension(file_path))
     match file_format:
         case DfInFormat.CSV:
-            df = pd.read_csv(file_path, dtype=dtype)
+            try:
+                df = pd.read_csv(file_path, dtype=dtype, **kwargs)
+            except UnicodeDecodeError:
+                last_exc = None
+                for enc in ("utf-8", "cp1252", "latin-1"):
+                    try:
+                        df = pd.read_csv(file_path, dtype=dtype, encoding=enc, **kwargs)
+                        break
+                    except UnicodeDecodeError as e:
+                        last_exc = e
+                else:
+                    # re-raise the last UnicodeDecodeError if none worked
+                    raise last_exc
         case DfInFormat.JSON:
             df = pd.read_json(file_path, dtype=dtype)
         case DfInFormat.Excel:
